@@ -57,42 +57,9 @@ body {
   height: 20px;
 }
 
-.nav {
-  display: flex;
-  gap: 30px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: var(--black);
-  font-size: 14px;
-  transition: opacity 0.3s;
-}
-
-.nav a:hover {
-  opacity: 0.6;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.menu-toggle span {
-  width: 25px;
-  height: 2px;
-  background-color: var(--black);
-  transition: all 0.3s;
-}
-
 /* Hero Section */
 .hero {
-  padding: 100px 0 300px;
+  padding: 40px 0 30px;
   text-align: center;
 }
 
@@ -129,6 +96,12 @@ body {
   filter: invert(1);
 }
 
+.big-logo {
+  width: 50%;
+  height: 50%;
+  margin-bottom: 0px;
+}
+
 .intro h2 {
   font-size: 18px;
   font-weight: 600;
@@ -149,7 +122,10 @@ body {
 }
 
 .service-card {
-  padding: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
   background-color: transparent;
   border-radius: 0;
 }
@@ -393,6 +369,39 @@ body {
   z-index: 98;
 }
 
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--black);
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.nav a:hover {
+  opacity: 0.6;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 2px;
+  background-color: var(--black);
+  transition: all 0.3s;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .menu-toggle {
@@ -441,7 +450,7 @@ body {
 
 @media (max-width: 480px) {
   .hero {
-    padding: 60px 0 200px;
+    padding: 60px 0 20px;
   }
 
   .services-grid {
@@ -465,10 +474,22 @@ body {
 }
 
 .page-subtitle {
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(12px, 3vw, 18px);
   font-weight: 400;
-  color: var(--gray);
+  color: black;
+  padding-left: 200px;
+  padding-right: 200px;
 }
+
+@media (max-width: 900px) {
+  .page-subtitle {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 
 /* About Content */
 .about-content {
@@ -498,7 +519,7 @@ body {
 .about-text p {
   font-size: 16px;
   line-height: 1.8;
-  color: var(--gray);
+  color: black;
   margin-bottom: 20px;
 }
 
@@ -558,7 +579,7 @@ body {
 .feature-item p {
   font-size: 14px;
   line-height: 1.6;
-  color: var(--gray);
+  color: black;
 }
 
 /* Our Values */
