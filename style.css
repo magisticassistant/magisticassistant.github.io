@@ -513,7 +513,7 @@ body {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 20px;
-  margin-top: 40px;
+  margin-top: 0px;
   color: var(--black);
 }
 
@@ -547,7 +547,7 @@ body {
 
 /* Why Choose Us */
 .why-choose-us {
-  padding: 80px 0;
+  padding: 0px 0;
   background-color: var(--cream);
 }
 
@@ -906,4 +906,66 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
+}
+
+/* srv Content */
+.srv-content {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.srv-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.srv-text h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  color: var(--black);
+}
+
+.srv-text h2:first-child {
+  margin-top: 0;
+}
+
+.srv-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.srv-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+}
+
+.srv-image img {
+  height: 500px;
+}
+
+/* Responsive srv Page */
+@media (max-width: 850px) {
+  .srv-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .srv-image {
+    position: relative;
+    top: 0;
+    padding: 0px;
+  }
+
+  .srv-image img {
+    height: 300px;
+  }
+
 }
