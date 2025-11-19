@@ -678,7 +678,7 @@ body {
 /* Portfolio Page Styles */
 
 .portfolio-hero {
-  padding: 120px 0 60px;
+  padding: 60px 0 0px;
   text-align: center;
   background-color: var(--cream);
 }
@@ -706,6 +706,7 @@ body {
 }
 
 .portfolio-item {
+
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -717,6 +718,7 @@ body {
 }
 
 .portfolio-image {
+  box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 0.2);
   position: relative;
   width: 100%;
   aspect-ratio: 1;
