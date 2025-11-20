@@ -815,10 +815,10 @@ body {
 }
 
 .team-item {
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  /* sebelumnya kamu punya display:flex; gap; dll — ganti dengan: */
+  position: relative;    /* diperlukan supaya .team-back absolute mengacu ke sini */
+  perspective: 1000px;   /* untuk 3D flip */
+  /* biarkan margin/gap di grid mengatur jarak; tidak perlu flex di sini */
 }
 
 .team-image-link {
@@ -907,6 +907,50 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
 }
+
+/* Wrap setiap team-item menjadi card */
+.team-item {
+  perspective: 1000px; /* for 3D flip */
+}
+
+/* Inner wrapper untuk flip */
+.team-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* Hover effect */
+.team-item:hover .team-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front (gambar tetap sama ukurannya) */
+.team-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+/* Back card */
+.team-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #225982;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 0.5rem;
+}
+
+
 
 /* srv Content */
 .srv-content {
