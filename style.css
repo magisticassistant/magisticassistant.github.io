@@ -815,10 +815,10 @@ body {
 }
 
 .team-item {
-  /* sebelumnya kamu punya display:flex; gap; dll — ganti dengan: */
-  position: relative;    /* diperlukan supaya .team-back absolute mengacu ke sini */
-  perspective: 1000px;   /* untuk 3D flip */
-  /* biarkan margin/gap di grid mengatur jarak; tidak perlu flex di sini */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .team-image-link {
@@ -829,18 +829,61 @@ body {
 .team-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;     /* square image; change if you want other ratio */
   overflow: hidden;
-  background-color: #8f9d88;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
+  background-color: #8f9d88; /* fallback bg */
 }
 
+.team-image > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.28s ease;
+  z-index: 1;
+}
+
+/* Smooth fade-out effect for the image */
+.team-image img {
+  transition: opacity 0.3s ease;
+}
+
+/* Remove image on hover */
+.team-item:hover .team-image img {
+  opacity: 0;
+}
+
+/* Solid background on hover */
 .team-item:hover .team-image {
   transform: translateY(-5px);
+  background-color: #225982; /* your hover color */
 }
+
+/* PNG icon appearing in center */
+.team-image {
+  position: relative;
+}
+
+.team-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 80px;      /* adjust size */
+  height: 80px;     /* adjust size */
+  background: url("img/linkedin-white.png") center/contain no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Show PNG when hovering */
+.team-item:hover .team-image::after {
+  opacity: 1;
+}
+
+
 
 .team-image img {
   width: 100%;
@@ -865,6 +908,38 @@ body {
 
 .team-content {
   text-align: left;
+}
+
+.team-hover-link {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;     /* adjust icon size */
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none; /* disable clicks until visible */
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  z-index: 3; /* above photo */
+}
+
+.team-hover-link:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.team-item:hover .team-hover-link {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1); /* subtle scaling if you want */
+}
+
+.team-hover-link img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
 }
 
 .team-content h3 {
@@ -907,50 +982,6 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
 }
-
-/* Wrap setiap team-item menjadi card */
-.team-item {
-  perspective: 1000px; /* for 3D flip */
-}
-
-/* Inner wrapper untuk flip */
-.team-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
-}
-
-/* Hover effect */
-.team-item:hover .team-inner {
-  transform: rotateY(180deg);
-}
-
-/* Front (gambar tetap sama ukurannya) */
-.team-front {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-/* Back card */
-.team-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #225982;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
-  border-radius: 0.5rem;
-}
-
-
 
 /* srv Content */
 .srv-content {
